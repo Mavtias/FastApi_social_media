@@ -1,3 +1,6 @@
+import os
+import uvicorn
+
 from fastapi import FastAPI                                 # , Body, Response, status, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -46,6 +49,8 @@ async def root():
     return {"message": "main page"}
 
 
-
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Usar el puerto que Render asigna
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
 
